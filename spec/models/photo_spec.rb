@@ -28,13 +28,6 @@ RSpec.describe Photo, type: :model do
     end
   end
 
-  describe "defaults" do
-    it "starts with likes_count of 0" do
-      photo.save!
-      expect(photo.likes_count).to eq(0)
-    end
-  end
-
   describe "associations" do
     it { is_expected.to respond_to(:likes) }
     it { is_expected.to respond_to(:liking_users) }

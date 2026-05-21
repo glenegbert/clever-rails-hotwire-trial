@@ -41,11 +41,11 @@ RSpec.describe Like, type: :model do
   end
 
   describe "database uniqueness constraint" do
-    it "raises on duplicate at the database level" do
+    it "raises at the database level when validations are bypassed" do
       like.save!
       expect {
-        Like.create!(user: user, photo: photo)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+        Like.new(user: user, photo: photo).save(validate: false)
+      }.to raise_error(ActiveRecord::StatementInvalid)
     end
   end
 end
