@@ -1,0 +1,4 @@
+<div class="like-button" id="like-button-<%= photo.id %>">
+  <%= image_tag liked ? "star-fill.svg" : "star-line.svg", alt: liked ? "Unlike" : "Like" %>
+  <span><%= photo.likes_count %></span>
+</div>

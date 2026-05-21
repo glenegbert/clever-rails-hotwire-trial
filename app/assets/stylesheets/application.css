@@ -8,3 +8,45 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+:root { --brand: #0075EB; }
+
+body { font-family: sans-serif; margin: 0; }
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+.nav__logo { height: 32px; }
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.photo-card img { width: 100%; display: block; border-radius: 4px; }
+
+.photo-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.photo-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

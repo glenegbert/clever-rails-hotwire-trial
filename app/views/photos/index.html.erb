@@ -1,0 +1,6 @@
+<%= content_for :title, "Photos" %>
+
+<div class="photo-grid">
+  <%= render partial: "photo_card", collection: @photos, as: :photo,
+             locals: { liked_photo_ids: @liked_photo_ids } %>
+</div>

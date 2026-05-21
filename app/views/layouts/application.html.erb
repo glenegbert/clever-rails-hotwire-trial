@@ -26,6 +26,7 @@
   <body>
     <% if signed_in? %>
       <nav>
+        <%= image_tag "logo.svg", alt: "Clever", class: "nav__logo" %>
         <span><%= current_user.email %></span>
         <%= button_to "Sign out", session_path, method: :delete %>
       </nav>

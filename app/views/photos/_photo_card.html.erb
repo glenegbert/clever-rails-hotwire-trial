@@ -1,0 +1,14 @@
+<div class="photo-card">
+  <a href="<%= photo.source_url %>" target="_blank" rel="noopener">
+    <%= image_tag photo.src_medium, alt: photo.photographer %>
+  </a>
+  <div class="photo-card__footer">
+    <span class="photo-card__photographer"><%= photo.photographer %></span>
+    <div class="photo-card__actions">
+      <a href="<%= photo.source_url %>" target="_blank" rel="noopener">
+        <%= image_tag "links.svg", alt: "Source" %>
+      </a>
+      <%= render "like_button", photo: photo, liked: liked_photo_ids.include?(photo.id) %>
+    </div>
+  </div>
+</div>
