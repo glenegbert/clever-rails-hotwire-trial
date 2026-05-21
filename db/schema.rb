@@ -10,20 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_21_145152) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_21_170847) do
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "photo_id", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.index ["photo_id"], name: "index_likes_on_photo_id"
-    t.index ["user_id", "photo_id"], name: "index_likes_on_user_id_and_photo_id", unique: true
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index [ "photo_id" ], name: "index_likes_on_photo_id"
+    t.index [ "user_id", "photo_id" ], name: "index_likes_on_user_id_and_photo_id", unique: true
+    t.index [ "user_id" ], name: "index_likes_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.integer "likes_count", default: 0, null: false
     t.string "photographer", null: false
     t.string "source_url", null: false
     t.string "src_medium", null: false
@@ -35,7 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_21_145152) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index [ "email" ], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "likes", "photos"
