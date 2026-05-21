@@ -24,6 +24,12 @@
   </head>
 
   <body>
+    <% if signed_in? %>
+      <nav>
+        <span><%= current_user.email %></span>
+        <%= button_to "Sign out", session_path, method: :delete %>
+      </nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>

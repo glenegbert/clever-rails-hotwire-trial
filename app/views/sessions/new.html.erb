@@ -1,0 +1,15 @@
+<%= content_for :title, "Sign in" %>
+
+<%= form_with url: session_path do |f| %>
+  <% if flash.now[:alert] %>
+    <p><%= flash.now[:alert] %></p>
+  <% end %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, autocomplete: "email", autofocus: true %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, autocomplete: "current-password" %>
+
+  <%= f.submit "Sign in" %>
+<% end %>
