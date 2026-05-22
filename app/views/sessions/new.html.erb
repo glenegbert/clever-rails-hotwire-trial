@@ -1,15 +1,26 @@
 <%= content_for :title, "Sign in" %>
 
-<%= form_with url: session_path do |f| %>
-  <% if flash.now[:alert] %>
-    <p><%= flash.now[:alert] %></p>
-  <% end %>
+<div class="auth">
+  <div class="auth__card">
+    <%= image_tag "logo.svg", alt: "Clever", class: "auth__logo" %>
+    <h1 class="auth__title">Sign in</h1>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, autocomplete: "email", autofocus: true %>
+    <%= form_with url: session_path do |f| %>
+      <% if flash.now[:alert] %>
+        <p class="auth__alert"><%= flash.now[:alert] %></p>
+      <% end %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, autocomplete: "current-password" %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email", autofocus: true %>
+      </div>
 
-  <%= f.submit "Sign in" %>
-<% end %>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+
+      <%= f.submit "Sign in", class: "btn--primary" %>
+    <% end %>
+  </div>
+</div>

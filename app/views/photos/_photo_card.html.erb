@@ -1,6 +1,6 @@
 <div class="photo-card">
   <%= link_to safe_external_url(photo.source_url), target: "_blank", rel: "noopener" do %>
-    <%= image_tag photo.src_medium, alt: photo.photographer %>
+    <%= image_tag photo.src_medium, alt: photo.photographer, class: "photo-card__image" %>
   <% end %>
   <div class="photo-card__footer">
     <span class="photo-card__photographer"><%= photo.photographer %></span>
