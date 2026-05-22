@@ -1,11 +1,11 @@
 <div class="photo-card">
-  <%= link_to photo.source_url, target: "_blank", rel: "noopener" do %>
+  <%= link_to safe_external_url(photo.source_url), target: "_blank", rel: "noopener" do %>
     <%= image_tag photo.src_medium, alt: photo.photographer %>
   <% end %>
   <div class="photo-card__footer">
     <span class="photo-card__photographer"><%= photo.photographer %></span>
     <div class="photo-card__actions">
-      <%= link_to photo.source_url, target: "_blank", rel: "noopener" do %>
+      <%= link_to safe_external_url(photo.source_url), target: "_blank", rel: "noopener" do %>
         <%= image_tag "links.svg", alt: "Source" %>
       <% end %>
       <%= render "like_button", photo: photo, like: likes_by_photo_id[photo.id] %>
