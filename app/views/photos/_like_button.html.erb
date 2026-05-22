@@ -1,12 +1,16 @@
-<div class="like-button" id="like-button-<%= photo.id %>">
+<div class="like-button" id="like-button-<%= photo.id %>"
+     data-controller="like"
+     data-like-liked-value="<%= like.present? %>">
   <% if like %>
-    <%= button_to photo_like_path(photo, like), method: :delete, class: "like-btn liked" do %>
+    <%= button_to photo_like_path(photo, like), method: :delete, class: "like-btn liked",
+                  data: { action: "turbo:submit-start->like#optimistic" } do %>
       <%= image_tag "star-fill.svg", alt: "Unlike" %>
     <% end %>
   <% else %>
-    <%= button_to photo_likes_path(photo), method: :post, class: "like-btn" do %>
+    <%= button_to photo_likes_path(photo), method: :post, class: "like-btn",
+                  data: { action: "turbo:submit-start->like#optimistic" } do %>
       <%= image_tag "star-line.svg", alt: "Like" %>
     <% end %>
   <% end %>
-  <span><%= photo.likes_count %></span>
+  <span data-like-target="count"><%= photo.likes_count %></span>
 </div>
