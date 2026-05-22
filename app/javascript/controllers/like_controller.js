@@ -13,18 +13,28 @@ export default class extends Controller {
   }
 
   optimistic() {
-    this.savedHTML = this.element.innerHTML
-    const delta = this.likedValue ? -1 : 1
-    this.countTarget.textContent = parseInt(this.countTarget.textContent) + delta
-    const img = this.element.querySelector("img")
-    if (img.src.includes("star-fill")) {
-      img.src = img.src.replace("star-fill", "star-line")
-    } else {
-      img.src = img.src.replace("star-line", "star-fill")
-    }
+    this.savedCount = parseInt(this.countTarget.textContent)
+    this.savedLiked = this.likedValue
+
+    this.countTarget.textContent = this.savedCount + (this.likedValue ? -1 : 1)
+    this._setStarState(!this.likedValue)
+    this.likedValue = !this.likedValue
   }
 
   revert() {
-    if (this.savedHTML) this.element.innerHTML = this.savedHTML
+    if (this.savedCount === undefined) return
+    this.countTarget.textContent = this.savedCount
+    this._setStarState(this.savedLiked)
+    this.likedValue = this.savedLiked
+  }
+
+  _setStarState(liked) {
+    const img = this.element.querySelector("img")
+    if (!img) return
+    if (liked) {
+      img.src = img.src.replace("star-line", "star-fill")
+    } else {
+      img.src = img.src.replace("star-fill", "star-line")
+    }
   }
 }
