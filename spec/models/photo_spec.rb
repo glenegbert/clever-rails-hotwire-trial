@@ -26,6 +26,16 @@ RSpec.describe Photo, type: :model do
       photo.source_url = nil
       expect(photo).not_to be_valid
     end
+
+    it "requires source_url to start with http or https" do
+      photo.source_url = "javascript:alert(1)"
+      expect(photo).not_to be_valid
+    end
+
+    it "accepts http source_url" do
+      photo.source_url = "http://pexels.com/photo/1"
+      expect(photo).to be_valid
+    end
   end
 
   describe "associations" do
