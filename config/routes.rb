@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   root to: "photos#index"
   resource :session, only: [ :new, :create, :destroy ]
+  resources :photos, only: [ :index ] do
+    resources :likes, only: [ :create, :destroy ]
+  end
 end
