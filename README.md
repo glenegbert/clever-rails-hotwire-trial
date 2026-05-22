@@ -1,24 +1,40 @@
-# README
+# Clever Rails Hotwire Trial
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A photo gallery app where authenticated users can browse and like photos — built with Rails, Hotwire, and no client-side framework.
 
-Things you may want to cover:
+## Stack
 
-* Ruby version
+- **Ruby** 4.0.1 / **Rails** 8.1.3
+- **SQLite** (development & test)
+- **Hotwire** — Turbo Streams for like/unlike without page reload; Stimulus for optimistic UI
+- **has_secure_password** for authentication (no Devise)
+- **RSpec** for tests
 
-* System dependencies
+## Setup
 
-* Configuration
+```bash
+bundle install
+bin/rails db:setup
+bin/rails server
+```
 
-* Database creation
+Then open http://localhost:3000 and sign in with one of the seeded accounts:
 
-* Database initialization
+| Email | Password |
+|-------|----------|
+| alice@example.com | password |
+| bob@example.com | letmein |
 
-* How to run the test suite
+## Running tests
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle exec rspec
+```
 
-* Deployment instructions
+## Features
 
-* ...
+- Sign in / sign out (session-based, no sign-up flow)
+- Photo gallery — 10 photos seeded from Pexels
+- Like / unlike photos via Turbo Streams (no page reload)
+- Optimistic UI — star and count update instantly on click, reverts on error
+- Mobile-responsive layout
