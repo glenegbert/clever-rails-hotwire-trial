@@ -8,7 +8,7 @@
       <%= link_to photo.source_url, target: "_blank", rel: "noopener" do %>
         <%= image_tag "links.svg", alt: "Source" %>
       <% end %>
-      <%= render "like_button", photo: photo, liked: liked_photo_ids.include?(photo.id) %>
+      <%= render "like_button", photo: photo, like: likes_by_photo_id[photo.id] %>
     </div>
   </div>
 </div>

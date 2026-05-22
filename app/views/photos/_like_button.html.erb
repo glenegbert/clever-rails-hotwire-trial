@@ -1,4 +1,12 @@
 <div class="like-button" id="like-button-<%= photo.id %>">
-  <%= image_tag liked ? "star-fill.svg" : "star-line.svg", alt: liked ? "Unlike" : "Like" %>
+  <% if like %>
+    <%= button_to photo_like_path(photo, like), method: :delete, class: "like-btn liked" do %>
+      <%= image_tag "star-fill.svg", alt: "Unlike" %>
+    <% end %>
+  <% else %>
+    <%= button_to photo_likes_path(photo), method: :post, class: "like-btn" do %>
+      <%= image_tag "star-line.svg", alt: "Like" %>
+    <% end %>
+  <% end %>
   <span><%= photo.likes_count %></span>
 </div>
