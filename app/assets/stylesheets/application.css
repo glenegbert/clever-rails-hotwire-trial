@@ -58,7 +58,7 @@ nav {
 
 nav form { margin: 0; }
 
-nav .btn--ghost {
+.nav__signout {
   background: none;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -69,11 +69,11 @@ nav .btn--ghost {
   white-space: nowrap;
 }
 
-nav .btn--ghost:hover { background: var(--bg); }
+.nav__signout:hover { background: var(--bg); }
 
 /* ── Sign-in page ─────────────────────────────────────────── */
 .auth {
-  min-height: calc(100vh - 56px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,6 +135,7 @@ nav .btn--ghost:hover { background: var(--bg); }
 }
 
 .field input:focus { border-color: var(--brand); }
+.field input:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
 .btn--primary {
   display: block;
